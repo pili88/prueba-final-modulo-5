@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         id="WebApp_ID" version="4.0">
+
+    <display-name>Horoscopo Chino</display-name>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.edutecno.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistroServlet</servlet-name>
+        <servlet-class>com.edutecno.servlets.RegistroServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroServlet</servlet-name>
+        <url-pattern>/RegistroServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>HoroscopoServlet</servlet-name>
+        <servlet-class>com.edutecno.servlets.ConsultaHoroscopoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HoroscopoServlet</servlet-name>
+        <url-pattern>/HoroscopoServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>HoroscopoServlet</servlet-name>
+        <url-pattern>/ConsultaHoroscopoServlet</url-pattern>
+    </servlet-mapping>
+    <!-- Recursos de conexión a base de datos -->
+    <resource-ref>
+        <description>Conexión Oracle</description>
+        <res-ref-name>jdbc/ConexionOracle</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <!-- Página de inicio -->
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!-- Configuración del recurso de base de datos para MySQL -->
+    <Resource
+            name="jdbc/HoroscopoDS"
+            type="javax.sql.DataSource"
+            maxActive="100"
+            maxIdle="30"
+            maxWait="10000"
+            username="root"
+            password="1234"
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/horoscopo_db?useSSL=false&amp;serverTimezone=UTC"
+            validationQuery="SELECT 1"
+            testOnBorrow="true"
+            testOnReturn="true"
+            testWhileIdle="true"
+    />
+</Context>
