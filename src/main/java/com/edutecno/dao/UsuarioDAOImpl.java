@@ -15,6 +15,33 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     public UsuarioDAOImpl() {
         this.conexion = new Conexion();
     }
+    // Metodo para buscar usuario por ID
+    public Usuario buscarUsuarioPorId(int id) {
+        String sql = "SELECT * FROM USUARIOS WHERE ID = ?";
+
+        try (Connection conn = conexion.getConnection();
+             PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setInt(1, id);
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("ID"));
+                    usuario.setNombre(rs.getString("NOMBRE"));
+                    usuario.setUsername(rs.getString("USERNAME"));
+                    usuario.setEmail(rs.getString("EMAIL"));
+                    usuario.setFechaNacimiento(rs.getDate("FECHA_NACIMIENTO"));
+                    usuario.setPassword(rs.getString("PASSWORD"));
+                    usuario.setAnimal(rs.getString("ANIMAL"));
+                    return usuario;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     @Override
     public boolean crearUsuario(Usuario usuario) {

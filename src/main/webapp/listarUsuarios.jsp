@@ -67,13 +67,13 @@
                             <td><%= usuario.getAnimal() != null ? usuario.getAnimal() : "No asignado" %></td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <form action="ModificarUsuarioServlet" method="get" class="d-inline me-1">
+                                    <form action="//modificar-usuario" method="get" class="d-inline me-1">
                                         <input type="hidden" name="id" value="<%= usuario.getId() %>">
                                         <button type="submit" class="btn btn-sm btn-primary">
                                             <i class="bi bi-pencil"></i> Editar
                                         </button>
                                     </form>
-                                    <form action="EliminarUsuarioServlet" method="post" class="d-inline">
+                                    <form action="//eliminar-usuario" method="post" class="d-inline">
                                         <input type="hidden" name="id" value="<%= usuario.getId() %>">
                                         <button type="submit" class="btn btn-sm btn-danger"
                                                 onclick="return confirm('¿Estás seguro de eliminar este usuario?')">

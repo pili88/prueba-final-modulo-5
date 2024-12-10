@@ -14,14 +14,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet("/modificar-usuario")
+@WebServlet("/ModificarUsuarioServlet") //ModificarUsuarioServlet
 public class ModificarUsuarioServlet extends HttpServlet {
     private UsuarioDAOImpl usuarioDAO;
 
     public void init() {
         usuarioDAO = new UsuarioDAOImpl();
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Verificar sesión
@@ -31,11 +30,32 @@ public class ModificarUsuarioServlet extends HttpServlet {
             return;
         }
 
-        String username = (String) session.getAttribute("usuario");
-        Usuario usuario = usuarioDAO.buscarUsuarioPorUsername(username);
-        request.setAttribute("usuario", usuario);
-        request.getRequestDispatcher("modificar-usuario.jsp").forward(request, response);
+        String idStr = request.getParameter("id");
+        if (idStr != null && !idStr.isEmpty()) {
+            try {
+                int id = Integer.parseInt(idStr);
+                Usuario usuario = usuarioDAO.buscarUsuarioPorId(id);
+
+                if (usuario != null) {
+                    request.setAttribute("usuario", usuario);
+                    request.getRequestDispatcher("modificar-usuario.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect("listarUsuarios.jsp");
+                }
+            } catch (NumberFormatException e) {
+                response.sendRedirect("listarUsuarios.jsp");
+            }
+        } else {
+            response.sendRedirect("listarUsuarios.jsp");
+        }
     }
+
+
+//        String username = (String) session.getAttribute("usuario");
+//        Usuario usuario = usuarioDAO.buscarUsuarioPorUsername(username);
+//        request.setAttribute("usuario", usuario);
+//        request.getRequestDispatcher("modificar-usuario.jsp").forward(request, response);
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

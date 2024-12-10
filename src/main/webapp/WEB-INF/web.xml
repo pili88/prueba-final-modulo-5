@@ -15,7 +15,14 @@
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>ModificarUsuarioServlet</servlet-name>
+        <servlet-class>com.edutecno.servlets.ModificarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificarUsuarioServlet</servlet-name>
+        <url-pattern>/modificar-usuario</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>RegistroServlet</servlet-name>
         <servlet-class>com.edutecno.servlets.RegistroServlet</servlet-class>

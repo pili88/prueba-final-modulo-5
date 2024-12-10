@@ -34,7 +34,7 @@
                     }
                 %>
 
-                <form action="ModificarUsuarioServlet" method="post">
+                <form action="//modificar-usuario" method="post">
                     <input type="hidden" name="id" value="<%= usuario.getId() %>">
 
                     <div class="row">

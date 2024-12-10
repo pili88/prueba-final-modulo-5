@@ -28,8 +28,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuario", username);
 
-            // Redirigir a página principal
-            response.sendRedirect("consulta-horoscopo.jsp");
+            // Redirigir a página principal o lista de usuarios
+            response.sendRedirect("ListarUsuariosServlet");
+//            response.sendRedirect("consulta-horoscopo.jsp");
         } else {
             // Credenciales inválidas
             request.setAttribute("error", "Credenciales incorrectas");
